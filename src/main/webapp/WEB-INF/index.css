@@ -1,7 +1,13 @@
+:root {
+    --primary-color: #4CAF50;
+    --text-color: #333;
+}
+
 body {
     font-family: Arial, sans-serif;
     max-width: 800px;
     margin: 0 auto;
+    color: var(--text-color);
 }
 
 ul {
@@ -14,7 +20,7 @@ li {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     color: white;
     padding: 10px 20px;
     border: none;

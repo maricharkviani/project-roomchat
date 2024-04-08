@@ -1,6 +1,29 @@
-const roomName = document.getElementById("room-name");
-const messages = document.getElementById("messages");
-const messageForm = document.getElementById("message-form");
-const messageInput = document.getElementById("message-input");
+function connectWebSocket() {
+    const socket = new WebSocket('ws://localhost:8080/roomChat/chat');
 
-// Code to fetch and
+    socket.addEventListener('open', function (event) {
+        console.log('WebSocket connection opened');
+    });
+
+    socket.addEventListener('message', function (event) {
+        console.log('Message received from server:', event.data);
+    });
+
+    function sendMessage(message) {
+        if (socket.readyState === WebSocket.OPEN) {
+            socket.send(message);
+            console.log('Message sent to server:', message);
+        } else {
+            console.error('WebSocket connection is not open');
+        }
+    }
+
+    return {
+        sendMessage: sendMessage
+    };
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const chatSocket = connectWebSocket();
+    chatSocket.sendMessage('Hello, server!')
+});
