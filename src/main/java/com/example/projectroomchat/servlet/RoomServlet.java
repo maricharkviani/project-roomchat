@@ -29,8 +29,10 @@ public class RoomServlet extends HttpServlet {
             roomChat.setName(name);
             roomChat.setMaxMembers(maxMembers);
 
+            chatRoomService.getInstance();
             chatRoomService.createChatRoom(roomChat);
-            response.getWriter().println("CHat room was created successfully");
+
+            response.getWriter().println("Chat room was created successfully");
         }catch (NumberFormatException e){
             response.getWriter().println("Invalid value for maxMembers");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
