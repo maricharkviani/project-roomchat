@@ -9,9 +9,11 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 
 public class ChatRoomService {
+    private static final ChatRoomService instance = new ChatRoomService();
+
     private EntityManagerFactory entityManagerFactory;
     public ChatRoomService(){
-        entityManagerFactory = Persistence.createEntityManagerFactory("ChatRoomPU");
+        entityManagerFactory = Persistence.createEntityManagerFactory("RoomChatPU");
     }
 
     public void createChatRoom(String name, int maxMembers){
@@ -25,6 +27,9 @@ public class ChatRoomService {
         entityManager.persist(roomChat);
         entityManager.getTransaction().commit();
         entityManager.close();
+    }
+    public static ChatRoomService getInstance() {
+        return instance;
     }
 
     public List<RoomChat> getAllRoomChats(){
