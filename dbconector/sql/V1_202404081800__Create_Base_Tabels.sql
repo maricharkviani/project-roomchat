@@ -5,7 +5,7 @@ CREATE TABLE `room_chat`.`room_chat` (
   PRIMARY KEY (`id`));
 
 CREATE TABLE `room_chat`.`user_session` (
-  `Id` INT NOT NULL AUTO_INCREMENT,
-  `usename` VARCHAR(45) NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
   `session_id` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Id`));
